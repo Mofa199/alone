@@ -18,6 +18,7 @@ const Header = () => {
             <Link href="/" className="hover:text-accent">Home</Link>
             {isAuthenticated && (
               <>
+                <Link href="/topics" className="hover:text-accent">Topics</Link>
                 <Link href="/student/question-bank" className="hover:text-accent">Question Bank</Link>
                 <Link href="/student/study-guides" className="hover:text-accent">Study Guides</Link>
                 <Link href="/student/quiz-builder" className="hover:text-accent">Quiz Builder</Link>
