@@ -1,0 +1,26 @@
+[
+  {
+    "id": "badge_first_quiz",
+    "name": "First Steps",
+    "description": "Completed your first quiz.",
+    "icon": "path/to/first_quiz_icon.svg"
+  },
+  {
+    "id": "badge_perfect_score",
+    "name": "Perfectionist",
+    "description": "Achieved a perfect score on a quiz.",
+    "icon": "path/to/perfect_score_icon.svg"
+  },
+  {
+    "id": "badge_anatomy_whiz",
+    "name": "Anatomy Whiz",
+    "description": "Answered 50 anatomy questions correctly.",
+    "icon": "path/to/anatomy_whiz_icon.svg"
+  },
+  {
+    "id": "badge_point_scholar",
+    "name": "Point Scholar",
+    "description": "Earned 1000 points.",
+    "icon": "path/to/point_scholar_icon.svg"
+  }
+]

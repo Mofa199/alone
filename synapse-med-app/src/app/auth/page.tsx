@@ -9,12 +9,26 @@ const AuthPage = () => {
 
   const handleLogin = () => {
     // Mock user login
-    login({ name: 'Medical Student', email: 'student@synapse.com', role: 'student' });
+    login({
+      name: 'Medical Student',
+      email: 'student@synapse.com',
+      role: 'student',
+      points: 150,
+      level: 2,
+      badgeIds: ['badge_first_quiz']
+    });
   };
 
   const handleSignup = () => {
     // Mock user signup and login
-    login({ name: 'New Student', email: 'new@synapse.com', role: 'student' });
+    login({
+      name: 'New Student',
+      email: 'new@synapse.com',
+      role: 'student',
+      points: 0,
+      level: 1,
+      badgeIds: []
+    });
   };
 
   const handleFlip = () => {

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import QuizInterface from '@/components/quiz/QuizInterface';
 import QuizResults from '@/components/quiz/QuizResults';
+import { useAuth } from '@/context/AuthContext';
 
 // Define types
 interface Topic {
@@ -29,6 +30,7 @@ const QuizBuilderPage = () => {
   const [score, setScore] = useState(0);
 
   const [quizState, setQuizState] = useState<'configuring' | 'in_progress' | 'complete'>('configuring');
+  const { addPoints, awardBadge } = useAuth();
 
   useEffect(() => {
     const fetchTopics = async () => {
@@ -68,10 +70,26 @@ const QuizBuilderPage = () => {
     }
   };
 
-  const handleQuizComplete = (finalScore: number, finalAnswers: (number | null)[]) => {
+  const handleQuizComplete = async (finalScore: number, finalAnswers: (number | null)[]) => {
     setScore(finalScore);
     setUserAnswers(finalAnswers);
     setQuizState('complete');
+
+    try {
+      const response = await fetch('/api/user/update-points', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ score: finalScore }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        addPoints(data.pointsAwarded);
+        awardBadge('badge_first_quiz'); // Award the "First Steps" badge
+        console.log(`${data.pointsAwarded} points awarded!`);
+      }
+    } catch (error) {
+      console.error("Failed to update points", error);
+    }
   };
 
   const handleRestart = () => {
